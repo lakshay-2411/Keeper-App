@@ -18,6 +18,10 @@ function CreateArea(props) {
 
   function submitNote(event){
     props.onAdd(note);
+    setNote({
+      title: "",
+      content: "",
+    })
     event.preventDefault();
   }
 
@@ -25,7 +29,7 @@ function CreateArea(props) {
     <div>
       <form className="relative bg-white rounded-lg w-[480px] shadow-3xl p-4 mt-7 mb-2 mx-auto">
         <input
-          className="w-full text-lg outline-none border-none"
+          className="w-full text-lg outline-none p-1 border-none"
           name="title"
           placeholder="Title"
           onChange={handleChange}

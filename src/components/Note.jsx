@@ -7,7 +7,7 @@ function Note(props) {
     }
 
   return (
-    <div className="bg-white rounded-lg w-60 shadow-md p-2.5 m-4 ml-8">
+    <div className="relative bg-white rounded-lg w-60 shadow-md p-2.5">
       <h1 className="text-lg mb-1.5 font-semibold text-[1.1em]">
         {props.title}
       </h1>
@@ -15,7 +15,7 @@ function Note(props) {
         {props.content}
       </p>
       <button
-        className="relative float-right text-[#f5ba13] mr-2.5"
+        className="absolute float-right text-[#f5ba13] bottom-0 right-1"
         onClick={handleClick}
       >
         DELETE

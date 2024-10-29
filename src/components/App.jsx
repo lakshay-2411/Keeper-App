@@ -9,42 +9,44 @@ function App() {
   const [notes, setNotes] = useState([]);
 
   function addNote(newNote) {
-    setNotes(prevNotes => {
+    setNotes((prevNotes) => {
       return [...prevNotes, newNote];
     });
     // console.log(note);
     // console.log(notes);
   }
 
-  function deleteNote(id){
-    setNotes(prevNotes => {
+  function deleteNote(id) {
+    setNotes((prevNotes) => {
       return prevNotes.filter((noteItem, index) => {
         return index !== id;
-      })
-    })
+      });
+    });
     console.log("Delete was triggered");
-    
   }
 
   return (
-    <div>
+    <div className="flex flex-col gap-6">
       <Header />
       <CreateArea onAdd={addNote} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mx-auto w-full items-center self-center origin-center place-items-center">
+        {notes.map((noteItem, index) => {
+          return (
+            <Note
+              key={index}
+              id={index}
+              title={noteItem.title}
+              content={noteItem.content}
+              onDelete={deleteNote}
+            />
+          );
+        })}
+      </div>
 
-      {notes.map((noteItem, index) => {
-        return (
-          <Note
-            key={index}
-            id={index}
-            title={noteItem.title}
-            content={noteItem.content}
-            onDelete={deleteNote}
-          />
-        );
-      })}
       {/* {notes.map((note) => (
         <Note key={note.key} title={note.title} content={note.content} />
       ))} */}
+
       <Footer />
     </div>
   );
