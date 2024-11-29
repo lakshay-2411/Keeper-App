@@ -8,7 +8,7 @@ function Note(props) {
 
   return (
     <div className="relative bg-white rounded-lg w-60 shadow-md p-2.5">
-      <h1 className="text-lg mb-1.5 font-semibold text-[1.1em]">
+      <h1 className="text-lg mb-1.5 font-semibold text-[1.1em] break-words">
         {props.title}
       </h1>
       <p className="text-lg mb-2.5 whitespace-pre-wrap break-words text-[1.1em]">

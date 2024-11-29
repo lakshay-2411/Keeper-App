@@ -5,6 +5,7 @@ function CreateArea(props) {
     title: "",
     content: "",
   });
+  const [error, setError] = useState("");
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -17,12 +18,18 @@ function CreateArea(props) {
   }
 
   function submitNote(event){
+    event.preventDefault();
+
+    if(!note.title.trim() || !note.content.trim()){
+      setError("Please fill in all fields");
+      return;
+    }
+    setError("");
     props.onAdd(note);
     setNote({
       title: "",
       content: "",
     })
-    event.preventDefault();
   }
 
   return (
@@ -50,6 +57,7 @@ function CreateArea(props) {
           Add
         </button>
       </form>
+      {error && <p className="text-red-500 text-center">{error}</p>}
     </div>
   );
 }
